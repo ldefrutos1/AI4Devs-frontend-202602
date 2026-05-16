@@ -8,24 +8,24 @@ Parece que el codigo actual usa fecth y services; vamos a quedarnos con una úni
 PLAN:
 Vamos a implementar la funcionalidad de "Ver proceso" de @frontend/src/components/Positions.tsxEl comportamiento debe ser: 
 Al pular en el botón se debe acceder a una nueva interfaz position que cumpla: 
--Debe mostrar el título de la posición en la parte superior, para dar contexto
--Con una flecha a la izquierda del título que permita volver al listado de posiciones
--Deben mostrarse tantas columnas como fases haya en el proceso; en formato kanban (similar a la imagen adjunta)
--La tarjeta de cada candidato/a debe situarse en la fase correspondiente, y debe mostrar su nombre completo y su puntuación media
--Debe mostrarse adecuadamente en móvil. Ten en cuenta que para la implementación se deben seguir las reglas de  @prompts/frontend-checklist.md
+- Debe mostrar el título de la posición en la parte superior, para dar contexto
+- Con una flecha a la izquierda del título que permita volver al listado de posiciones
+- Deben mostrarse tantas columnas como fases haya en el proceso; en formato kanban (similar a la imagen adjunta)
+- La tarjeta de cada candidato/a debe situarse en la fase correspondiente, y debe mostrar su nombre completo y su puntuación media
+- Debe mostrarse adecuadamente en móvil. Ten en cuenta que para la implementación se deben seguir las reglas de  @prompts/frontend-checklist.md
 
 Respecto al punto 3 no vamos a usar Mock sino que vamos a ejecutar el seed.ts del proyecto backend
 
 
 PLAN GENERADO
--Nº	Descripción	
--0   Datos: seed (prisma generate, migrate, seed.ts)
--1   Backend: GET /position (listado de posiciones)
--2   Frontend: apiClient.js + positionService.js con fetch (getPositions, getInterviewFlow, getCandidatesByPosition)
--3   Frontend: Positions.tsx sin mock, carga desde API, loading/error
--4   Frontend: PositionProcess.tsx + CandidateKanbanCard.tsx (Kanban)
--5   Ruta en App.js: /positions/:positionId/process + enlace "Ver proceso"
--6    Prueba manual (listado, Kanban, back, móvil)
+- Nº	Descripción	
+- 0   Datos: seed (prisma generate, migrate, seed.ts)
+- 1   Backend: GET /position (listado de posiciones)
+- 2   Frontend: apiClient.js + positionService.js con fetch (getPositions, getInterviewFlow, getCandidatesByPosition)
+- 3   Frontend: Positions.tsx sin mock, carga desde API, loading/error
+- 4   Frontend: PositionProcess.tsx + CandidateKanbanCard.tsx (Kanban)
+- 5   Ruta en App.js: /positions/:positionId/process + enlace "Ver proceso"
+- 6    Prueba manual (listado, Kanban, back, móvil)
 
 
 Vamos a implementar el plan; ejecuta el primer punto; si tienes alguna duda preguntame; no pases al siguiente hasta que hayamos confirmado que el primero está correcto
