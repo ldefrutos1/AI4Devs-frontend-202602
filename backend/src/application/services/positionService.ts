@@ -3,6 +3,34 @@ import { Position } from '../../domain/models/Position';
 
 const prisma = new PrismaClient();
 
+export const getAllPositionsService = async () => {
+    try {
+        const positions = await prisma.position.findMany({
+            orderBy: { id: 'asc' },
+            select: {
+                id: true,
+                title: true,
+                status: true,
+                applicationDeadline: true,
+                location: true,
+            },
+        });
+
+        return positions.map((position) => ({
+            id: position.id,
+            title: position.title,
+            status: position.status,
+            location: position.location,
+            applicationDeadline: position.applicationDeadline
+                ? position.applicationDeadline.toISOString()
+                : null,
+        }));
+    } catch (error) {
+        console.error('Error retrieving positions:', error);
+        throw new Error('Error retrieving positions');
+    }
+};
+
 const calculateAverageScore = (interviews: any[]) => {
     if (interviews.length === 0) return 0;
     const totalScore = interviews.reduce((acc, interview) => acc + (interview.score || 0), 0);
